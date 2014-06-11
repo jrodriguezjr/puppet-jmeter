@@ -12,16 +12,18 @@ class jmeter(
   $jmeter_plugins_version = '1.1.3',
 ) {
 
-  Exec { path => '/bin:/usr/bin:/usr/sbin' }
+  # Exec { path => '/bin:/usr/bin:/usr/sbin' }
 
-  $jdk_pkg = $::osfamily ? {
-    debian => 'openjdk-6-jre-headless',
-    redhat => 'java-1.6.0-openjdk'
-  }
+  # $jdk_pkg = $::osfamily ? {
+  #   debian => 'openjdk-6-jre-headless',
+  #   redhat => 'java-1.6.0-openjdk'
+  # }
 
-  package { $jdk_pkg:
-    ensure => present,
-  }
+  # package { $jdk_pkg:
+  #   ensure => present,
+  # }
+
+  include java
 
   exec { 'download-jmeter':
     command => "wget -P /root http://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${jmeter_version}.tgz",
