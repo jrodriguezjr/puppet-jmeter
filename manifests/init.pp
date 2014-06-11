@@ -23,7 +23,9 @@ class jmeter(
   #   ensure => present,
   # }
 
-  include java
+  class { 'java':
+    distribution => 'jre'
+  }
 
   exec { 'download-jmeter':
     command => "wget -P /root http://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${jmeter_version}.tgz",
