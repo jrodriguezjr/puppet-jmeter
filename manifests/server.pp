@@ -7,7 +7,7 @@
 #   class { 'jmeter::server': }
 #
 class jmeter::server (
-  $server_ip = '0.0.0.0',
+  $server_ip = "$::ipaddress_eth0",
   $jmeter_version         = '2.11',
   $jmeter_plugins_install = True,
   $jmeter_plugins_version = '1.1.3',
