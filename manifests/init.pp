@@ -46,7 +46,7 @@ class jmeter(
     }
 
     exec { 'install-jmeter-plugins':
-      command => "unzip -q -d JMeterPlugins JMeterPlugins-Standard-${jmeter_plugins_version}.zip && mv JMeterPlugins/JMeterPlugins.jar /usr/share/jmeter/lib/ext",
+      command => "unzip -q -d JMeterPlugins JMeterPlugins-Standard-${jmeter_plugins_version}.zip && mv JMeterPlugins/JMeterPlugins/lib/ext/JMeterPlugins-Standard.jar /usr/share/jmeter/lib/ext && rm -rf JMeterPlugins",
       cwd     => '/root',
       creates => '/usr/share/jmeter/lib/ext/JMeterPlugins.jar',
       require => [Package['unzip'], Exec['install-jmeter'], Exec['download-jmeter-plugins']],
