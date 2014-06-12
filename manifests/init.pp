@@ -23,6 +23,15 @@ class jmeter(
   #   ensure => present,
   # }
 
+  package { 'tzdata':
+    ensure => '2014a-0wheezy1',
+  }
+
+  package { 'tzdata-java':
+    ensure => '2014a-0wheezy1',
+    require => Package ['tzdata']
+  }
+
   class { 'java':
     distribution => 'jre'
   }
